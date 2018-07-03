@@ -30,7 +30,8 @@ bot.library(validators());
 bot.library(askMeVA());
 bot.use(builder.Middleware.sendTyping());
 
-var projectName = process.env.NAME_PROJECT;
+//var projectName = process.env.NAME_PROJECT;
+var projectName = "insurance";
 if(projectName){
 	/*
 		Il BOT utilizza il modello LUIS associato al progetto...
