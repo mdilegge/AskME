@@ -1,0 +1,80 @@
+{
+    "creditCard":{
+        "steps":[
+            {
+                "name":"NUMERO CARTA DI CREDITO",
+                "operation":"TEXT",
+                "isFormField":true,
+                "text":"Inserisici il numero della tua carta di credito:"
+            },
+            {
+                "name":"VALIDITA'",
+                "operation":"DATE",
+                "isFormField":true,
+                "text":"Inserisci i dati relativi alla scadenza della tua carta di credito(data di scadenza nel formato MM/YYYY)"
+            },
+            {
+                "operation":"SUMMARY",
+                "text":"Dunque, riepilogando abbiamo: <br/>",
+                "costraint": "**IMPORTO**: 25€<br/>"
+            },
+            {
+                "name":"RICHIESTA INVIO MAIL",
+                "operation":"SELECT",
+                "text":"Confermi l'operazione?",
+                "values":["SI","NO"],
+                "maxRetries": 2
+            },
+            {
+                "name":"EMAIL",
+                "operation":"GET_EMAIL",
+                "isFormField":true,
+                "isValidFor":{
+                    "step":"RICHIESTA INVIO MAIL",
+                    "value":"SI"
+                },
+                "text":"Bene, dammi un **indirizzo di posta elettronica** cui inviare la ricevuta.",
+                "invalidMsg": "Questo non sembra un indirizzo eMail valido, controlla bene; senza questa informazione non posso inviarti il preventivo!",
+                "maxRetries": 2
+            },
+            {
+                "operation":"SEND_EMAIL",
+                "isValidFor":{
+                    "step":"RICHIESTA INVIO MAIL",
+                    "value":"SI"
+                },
+                "text":"La ricarica è stata effettuata, controlla la casella di posta a breve riceverai la tua ricevuta.",
+                "template": "mail_DEMOWIND.html",
+                "costraint": "<p><b>IMPORTO</b>: 25€</p>"
+            },
+            {
+                "operation":"ALERT",
+                "text":"Grazie per aver scelto il nostro servizio"
+            }
+        ]
+    },
+    "linea":{
+        "steps":[
+            {
+                "name":"NUMERO DI TELEFONO",
+                "operation":"TEXTVALIDATE",
+                "validators": "validators:phonenumber",
+                "isFormField":true,
+                "text":"Che numero vuoi ricaricare?"
+            },
+            {
+                "name":"CONFERMA NUMERO",
+                "operation":"SELECT",
+                "layout": "carousel",
+                "values":[
+                    {
+                        "title": "Confermi che il numero da ricaricare è quello indicato?",
+                        "options":["TAGLIO_RICARICA_DEMO","ANNULLA_DEMO"],
+                        "labels":["Confermo","Annulla"]
+                    }
+                ]
+            }
+        ]
+    }
+}
+ 

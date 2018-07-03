@@ -1,0 +1,233 @@
+{
+    "uploadFile":{
+        "steps":[
+            {
+                "operation":"ATTACH",
+                "text":"Scegli il file...",
+                "invalidMsg":"Non sembra che tu abbia scelto un file valido, riprova ad allegare!"
+            },
+            {
+                "operation":"UPLOAD"
+            },
+            {
+                "text":"invio mail",
+                "operation":"SEND_EMAIL",
+                "receiver":"massimiliano.polito@mac.com",
+                "subject":"ARGOMENTO",
+                "template": "mail_REACT.html"
+            }        
+        ]
+    },
+    "posturale":{
+        "steps":[
+            {
+                "operation":"ALERT",
+                "text":"Per le lezioni POSTURALI puoi scegliere tra le nostre proposte"
+            },
+            {
+                "operation":"SELECT",
+                "layout": "carousel",
+                "values":[
+                    {
+                        "title": "Mat pilates",
+                        "description": "ginnastica specifica consiste in esercizi di alungamneto e tonificazione muscolare eseguiti a corpo libero o con l ausilio di piccoli attrezzi, per migliorare il controllo e la fluidità dei movimenti.",
+                        "image":"https://glacial-atoll-11053.herokuapp.com/images/pilates_matwork.jpg",
+                        "options":["Mat pilates"],
+                        "labels":["Approfondisci"]
+                    },
+                    {
+                        "title": "Power Pilates",
+                        "description": "ginnastica specifica consiste in esercizi di allungamneto e tonificazione muscolare eseguiti a corpo libero o con l ausilio di piccoli attrezzi, per migliorare il controllo e la fluidità dei movimenti.",
+                        "image":"https://glacial-atoll-11053.herokuapp.com/images/tntpilates.jpg",
+                        "options":["Power Pilates"],
+                        "labels":["Approfondisci"]
+                    },
+                    {
+                        "title": "Body-flex Pilates",
+                        "description": "ginnastica specifica consiste in esercizi di allungamneto e tonificazione muscolare eseguiti a corpo libero o con l ausilio di piccoli attrezzi, per migliorare il controllo e la fluidità dei movimenti.",
+                        "image":"https://glacial-atoll-11053.herokuapp.com/images/backpilates.jpg",
+                        "options":["Body-flex Pilates"],
+                        "labels":["Approfondisci"]
+                    }
+                ]
+            }
+        ]
+    },
+    "aerobica":{
+        "steps":[
+            {
+                "operation":"ALERT",
+                "text":"Scegli tra le lezioni di AEROBICA quelle che più ti piace"
+            },
+            {
+                "operation":"SELECT",
+                "layout": "carousel",
+                "values":[
+                    {
+                        "title": "Spinning",
+                        "description": "allenamento aerobico che serve a miglirare il sistema cardiovascolare e la resistenza.",
+                        "image":"https://glacial-atoll-11053.herokuapp.com/images/spinning.jpg",
+                        "options":["Spinning"],
+                        "labels":["Approfondisci"]
+                    },
+                    {
+                        "title": "H.E.A.T. Program",
+                        "description": "Allenamento ad alta energia che riproduce tutti i benefici di una camminata su di un percorso di montagna.",
+                        "image":"https://glacial-atoll-11053.herokuapp.com/images/heatprogram.jpg",
+                        "options":["HEAT Program"],
+                        "labels":["Approfondisci"]
+                    },
+                    {
+                        "title": "Fit Boxe",
+                        "description": "Per allenare sia il sistema cardio vascolare che la resistenza con combinazioni che mixano aerobica con le arti marziali.",
+                        "image":"https://glacial-atoll-11053.herokuapp.com/images/fitboxe.jpg",
+                        "options":["Fit Boxe"],
+                        "labels":["Approfondisci"]
+                    }
+                ]
+            }
+        ]
+    },
+    "muscolare":{
+        "steps":[
+            {
+                "operation":"ALERT",
+                "text":"La nostra offerta per le lezioni MUSCOLARI è piuttosto ampia"
+            },
+            {
+                "operation":"SELECT",
+                "layout": "carousel",
+                "values":[
+                    {
+                        "title": "Total Body Workout",
+                        "description": "tonificazione totale di tutto il corpo.",
+                        "image":"https://glacial-atoll-11053.herokuapp.com/images/totalbodyworkout.jpg",
+                        "options":["Total Body Workout"],
+                        "labels":["Approfondisci"]
+                    },
+                    {
+                        "title": "Gymnastica",
+                        "description": " la tonicità… Dedicata a tutti coloro che vogliono ottenere una muscolatura tonica e reattiva per un corpo esteticamente piacevole.",
+                        "image":"https://glacial-atoll-11053.herokuapp.com/images/gymnastica.jpg",
+                        "options":["Gymnastica"],
+                        "labels":["Approfondisci"]
+                    },
+                    {
+                        "title": "Interval Training",
+                        "description": "Per allenare il corpo sia a livello muscolare che cardiovascolare, si alternano stazioni di esercizi di tonificazione a stazioni di attività aerobica.",
+                        "image":"https://glacial-atoll-11053.herokuapp.com/images/intervaltraining.jpg",
+                        "options":["Interval Training"],
+                        "labels":["Approfondisci"]
+                    }
+                ]
+            }
+        ]
+    },
+    "gambe":{
+        "steps":[
+            {
+                "operation":"ALERT",
+                "text":"Per l'allenamento specifico delle gambe segui il video che ti proponiamo."
+            },
+            {
+                "operation":"ALERT",
+                "text":"Solo qualche istante per il download poi potrai scegliere la scheda che corrisponde al tuo allenamento (Low, Medium, Hard)."
+            },
+            {
+                "name":"SUGGEST",
+                "operation":"ALERT",
+                "text":"Nel frattempo altri clienti interessati ai programmi di allenamento hanno trovato utili i nostri suggerimenti relativi agli integratori alimentari. Se l'argomento ti interessa, puoi prendere visione dei prodotti che abbiamo selezionato per te:"
+            },
+            {
+                "operation":"SELECT",
+                "layout": "carousel",
+                "forward": true,
+                "values":[
+                    {
+                        "description": "Vitamine1",
+                        "image":"https://glacial-atoll-11053.herokuapp.com/images/integratore1.jpeg",
+                        "options":["Info","Acquista"]
+                    },
+                    {
+                        "description": "Vitamine2",
+                        "image":"https://glacial-atoll-11053.herokuapp.com/images/integratore2.jpeg",
+                        "options":["Info","Acquista"]
+                    }
+                ]
+            },
+            {
+                "name": "LEG",
+                "operation":"SELECT",
+                "layout": "carousel",
+                "values":[
+                    {
+                        "title": "LEG PRESS",
+                        "video":"https://glacial-atoll-11053.herokuapp.com/images/LegPress.mp4",
+                        "options":["LEG_LOW","LEG_MEDIUM","LEG_HARD"],
+                        "labels":["Low","Medium","Hard"]
+
+                    }
+                ]
+            }
+        ]        
+    },
+    "LEG_LOW":{
+        "steps":[
+            {
+                "name":"LEG LOW",
+                "operation":"DOWNLOAD",
+                "text":"Scarica il nostro programma di allenamento livello LOW!",
+                "contentType":"application/pdf",
+                "contentUrl":"https://glacial-atoll-11053.herokuapp.com/html/LOW.pdf"  ,
+                "fileName": "Scheda Allenamento LOW"              
+            }
+        ]
+    },
+    "LEG_MEDIUM":{
+        "steps":[
+            {
+                "name":"LEG MEDIUM",
+                "text":"Scarica il nostro programma di allenamento livello MEDIUM!",
+                "operation":"DOWNLOAD",
+                "contentType":"application/pdf",
+                "contentUrl":"https://glacial-atoll-11053.herokuapp.com/html/MEDIUM.pdf"  ,
+                "fileName": "Scheda Allenamento MEDIUM"              
+            }
+        ]
+    },
+    "LEG_HARD":{
+        "steps":[
+            {
+                "name":"LEG HARD",
+                "operation":"DOWNLOAD",
+                "text":"Scarica il nostro programma di allenamento livello HARD!",
+                "contentType":"application/pdf",
+                "contentUrl":"https://glacial-atoll-11053.herokuapp.com/html/HARD.pdf"  ,
+                "fileName": "Scheda Allenamento HARD"              
+            }
+        ]
+    },
+    "chest":{
+        "steps":[
+            {
+                "operation":"ALERT",
+                "text":"Per l'allenamento specifico dei pettorali segui il video che ti proponiamo."
+            },
+            {
+                "operation":"ALERT",
+                "text":"Solo qualche istante per il download poi potrai scegliere la scheda che corrisponde al tuo allenamento (Low, Medium, Hard)."
+            },
+            {
+                "operation":"SELECT",
+                "layout": "carousel",
+                "values":[
+                    {
+                        "title": "CHEST PRESS",
+                        "video":"https://glacial-atoll-11053.herokuapp.com/images/ChestPress.mp4",
+                        "options":["LEG_LOW","LEG_MEDIUM","LEG_HARD"],
+                        "labels":["Low","Medium","Hard"]
+                    }
+                ]
+            }
+        ]        
+    }}

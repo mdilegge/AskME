@@ -1,0 +1,30 @@
+{
+  "name": "askchat",
+  "version": "1.0.0",
+  "description": "Virtual Agent Integration",
+  "main": "index.js",
+  "engines": {
+    "node": "8.1.4"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
+  },
+  "keywords": [
+    "Virtual",
+    "Agent",
+    "AskMe"
+  ],
+  "author": "Massimiliano Polito",
+  "license": "ISC",
+  "dependencies": {
+    "botbuilder": "^3.15.0",
+    "botbuilder-location": "^2.0.0",
+    "cheerio": "^1.0.0-rc.1",
+    "express": "^4.16.3",
+    "mathjs": "^5.0.1",
+    "node-rest-client": "^3.1.0",
+    "replaceall": "^0.1.6",
+    "restify": "^4.3.4"
+  }
+}

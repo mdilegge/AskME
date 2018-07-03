@@ -1,0 +1,1 @@
+NAME_PROJECT="demowind" ID_PROJECT='5acb2b4b5c14850958c6a516' BASE_URL='http://stage-askme.network-contacts.it/AskMeSemRest/askmesem/rest/virtualAgentService/' ACTION_ANSWER='searchAnswer' ACTION_CATEGORY='answerByCategory' MICROSOFT_APP_ID='c3cc464f-9950-4bd8-9c0a-69d97b79d4c2' MICROSOFT_APP_PASSWORD='kmz9hdZmdFqi7VQDoe78094' node index.js

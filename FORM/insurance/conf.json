@@ -1,0 +1,327 @@
+{
+    "uploadFile":{
+        "steps":[
+            {
+                "operation":"ATTACH",
+                "text":"Scegli il file...",
+                "invalidMsg":"Non sembra che tu abbia scelto un file valido, riprova ad allegare!"
+            },
+            {
+                "operation":"UPLOAD"
+            },
+            {
+                "text":"invio mail",
+                "operation":"SEND_EMAIL",
+                "receiver":"massimiliano.polito@mac.com",
+                "subject":"ARGOMENTO",
+                "template": "mail_REACT.html"
+            }        
+        ]
+    },
+    "react":{
+        "steps":[
+            {
+                "operation":"ALERT",
+                "text":"Per comunicare con REACT Consulting abbiamo bisogno di alcune informazioni; cominciamo ma in qualsiasi momento puoi dire 'stop' per interrompere l'intervista."
+            },
+            {
+                "name":"NOME",
+                "operation":"TEXT",
+                "isFormField":true,
+                "text":"Mi dici il tuo **nome** per favore?"
+            },
+            {
+                "name":"COGNOME",
+                "operation":"TEXT",
+                "isFormField":true,
+                "text":"Anche il tuo **cognome**, grazie."
+            },
+            {
+                "name":"EMAIL",
+                "operation":"GET_EMAIL",
+                "isFormField":true,
+                "text":"Indica un **indirizzo eMail** al quale contattarti.",
+                "invalidMsg": "Questo non sembra un indirizzo eMail valido, controlla bene; senza questa informazione non possiamo accettare il modulo!",
+                "maxRetries": 2
+            },
+            {
+                "operation":"CHECK",
+                "isCheckFor":{
+                    "step":"EMAIL",
+                    "text":"Purtroppo senza eMail non puoi comunicare con la nostra azienda, grazie lo stesso per il tuo interessamento.",
+                    "stop":true
+                }
+            },
+            {
+                "name":"ARGOMENTO",
+                "operation":"SELECT",
+                "isFormField":true,
+                "text":"Scegli l'**oggetto** di questa comunicazione",
+                "values":["Informazioni","Lavora con noi","Campus REACT"],
+                "maxRetries": 2
+            },
+            {
+                "operation":"CHECK",
+                "isCheckFor":{
+                    "step":"ARGOMENTO",
+                    "text":"Considererò che tu voglia conoscere informazioni di tipo generale!",
+                    "pushValue":"Informazioni"
+                }
+            },
+            {
+                "name":"MESSAGGIO",
+                "operation":"NOTE",
+                "isFormField":true,
+                "text":"Cosa vuoi comunicare all'azienda *(max 200 caratteri)*?",
+                "invalidMsg": "Il testo è troppo lungo, prova a sintetizzare.",
+                "maxRetries": 2
+            },
+            {
+                "name":"ALLEGATO",
+                "operation":"SELECT",
+                "isFormField":true,
+                "isValidFor":{
+                    "step":"ARGOMENTO",
+                    "value":["Lavora con noi","Campus REACT"]
+                },
+                "text":"Hai un curriculm vitae da allegare?",
+                "values":["SI","NO"],
+                "maxRetries": 2
+            },
+            {
+                "operation":"CHECK",
+                "isValidFor":{
+                    "step":"ARGOMENTO",
+                    "value":["Lavora con noi","Campus REACT"]
+                },
+                "isCheckFor":{
+                    "step":"ALLEGATO",
+                    "text":"Considererò che tu non abbia nulla da allegare!"
+                }
+            },
+            {
+                "operation":"ATTACH",
+                "isValidFor":{
+                    "step":"ALLEGATO",
+                    "value":"SI"
+                },
+                "text":"Scegli il file...",
+                "invalidMsg":"Non sembra che tu abbia scelto un file valido, riprova ad allegare!"
+            },
+            {
+                "name":"UPLOAD",
+                "isValidFor":{
+                    "step":"ALLEGATO",
+                    "value":"SI"
+                },
+                "operation":"UPLOAD"
+            },
+            {
+                "name":"AUTORIZZA DATI PERSONALI",
+                "operation":"SELECT",
+                "isFormField":true,
+                "text":"Autorizzi il trattamento dei dati personali, ai sensi del D.lgs. 196 del 30 giugno 2003?",
+                "values":["SI","NO"],
+                "maxRetries": 2
+            },
+            {
+                "operation":"CHECK",
+                "isCheckFor":{
+                    "step":"AUTORIZZA DATI PERSONALI",
+                    "text":"Senza un'indicazione specifica devo supporre che tu non voglia autorizzare il trattamento dei dati personali!",
+                    "pushValue":"NO"
+                }
+            },
+            {
+                "operation":"SEND_EMAIL",
+                "text":"Il nostro sistema sta elaborando la tua richiesta, ne riceverai una copia anche alla tua casella di posta.",
+                "isValidFor":{
+                    "step":"AUTORIZZA DATI PERSONALI",
+                    "value":"SI"
+                },
+                "receiver":"marketing@reactconsulting.it",
+                "receiver_":"massimiliano.polito.rm@gmail.com",
+                "subject":"ARGOMENTO",
+                "template": "mail_REACT.html",
+                "sendToOwner": true
+            },
+            {
+                "operation":"ALERT",
+                "text":"Grazie per il tuo interessamento, spero di rivederti presto."
+            }
+        ]
+    },
+    "preventivo":{
+        "steps":[
+            {
+                "operation":"ALERT",
+                "text":"Ti farò una serie domande per capire in maniera più precisa le tue esigenze. In qualsiasi momento puoi dire 'stop' per interrompere l'intervista."
+            },
+            {
+                "name":"TIPO VEICOLO",
+                "operation":"SELECT",
+                "isFormField":true,
+                "text":"Mi dici per favore, la **tipologia** del veicolo che vorresti assicurare?",
+                "values":["Auto","Moto","Natante"],
+                "maxRetries": 2
+            },
+            {
+                "operation":"CHECK",
+                "isCheckFor":{
+                    "step":"TIPO VEICOLO",
+                    "text":"Purtroppo senza indicazione di un veicolo non ho modo di calcolare il preventivo.",
+                    "stop":true
+                }
+            },
+            {
+                "name":"USO VEICOLO",
+                "operation":"SELECT",
+                "isFormField":true,
+                "text":"E a quale **uso** è destinato?",
+                "values":["Privato","Noleggio","Taxi"],
+                "maxRetries": 2
+            },
+            {
+                "operation":"CHECK",
+                "isCheckFor":{
+                    "step":"USO VEICOLO",
+                    "text":"Purtroppo senza indicazione dell'uso non ho modo di calcolare il preventivo.",
+                    "stop":true
+                }
+            },
+            {
+                "name":"TARGA",
+                "operation":"TEXT",
+                "isFormField":true,
+                "text":"Ho bisogno anche della **targa** del veicolo"
+            },
+            {
+                "name":"ALIMENTAZIONE VEICOLO",
+                "operation":"SELECT",
+                "isFormField":true,
+                "text":"Il veiocolo è **alimentato** con:",
+                "values":["Benzina","Diesel","Elettricità"],
+                "maxRetries": 2
+            },
+            {
+                "operation":"CHECK",
+                "isCheckFor":{
+                    "step":"ALIMENTAZIONE VEICOLO",
+                    "text":"Va bene considererò che sia alimentato a benzina!",
+                    "pushValue":"Benzina"
+                }
+            },
+            {
+                "operation":"ALERT",
+                "text":"Ho tutto quello che occorre per quanto riguarda il veicolo, ora mi serve sapere qualcosa di te! Cominciamo..."
+            },
+            {
+                "name":"PERSONA",
+                "operation":"SELECT",
+                "isFormField":true,
+                "text":"Questa richiesta la fai come **persona fisica** o **giuridica**?",
+                "values":["Fisica","Giuridica"],
+                "maxRetries": 2
+
+            },
+            {
+                "operation":"CHECK",
+                "isCheckFor":{
+                    "step":"PERSONA",
+                    "text":"Va bene considererò che tu sia una persona fisica!",
+                    "pushValue":"Fisica"
+                }
+            },
+            {
+                "name":"DATA DI NASCITA",
+                "operation":"DATE",
+                "isFormField":true,
+                "isValidFor":{
+                    "step":"PERSONA",
+                    "value":"Fisica"
+                },
+                "text":"La tua **data di nascita**, per favore! *(Usa il formato GG/MM/AAAA ad esempio 12/01/1980)*",
+                "invalidMsg": "Hai digitato una data non valida, controlla bene il formato: deve essere GG/MM/AAAA ricordi?",
+                "maxRetries": 2
+            },
+            {
+                "operation":"CHECK",
+                "isValidFor":{
+                    "step":"PERSONA",
+                    "value":"Fisica"
+                },
+                "isCheckFor":{
+                    "step":"DATA DI NASCITA",
+                    "text":"Ok, non vuoi dirmi quando sei nato; ne farò a meno ma il preventivo sarà meno accurato."
+                }
+            },
+            {
+                "name":"CAP",
+                "operation":"CAP",
+                "isFormField":true,
+                "isLabelFor":{
+                    "step":"PERSONA",
+                    "Fisica":"Qual è il **CAP** della zona in cui vivi?",
+                    "Giuridica":"Qual è il **CAP** della tua sede legale?"
+                },
+                "invalidMsg": "Il CAP è un codice numerico di cinque cifre, controlla l'esattezza di quello che hai indicato."
+            },
+            {
+                "operation":"CHECK",
+                "isCheckFor":{
+                    "step":"CAP",
+                    "text":"Senza l'indicazione del CAP il preventivo è impossibile, non posso andare avanti; puoi sempre chiederne un altro in qualsiasi momento!",
+                    "stop":true
+                }
+            },
+            {
+                "name":"EMAIL",
+                "operation":"GET_EMAIL",
+                "isFormField":true,
+                "text":"Bene, abbiamo tutti i dati necessari per calcolare il tuo preventivo, dammi un **indirizzo di posta elettronica** cui inviare il resoconto.",
+                "invalidMsg": "Questo non sembra un indirizzo eMail valido, controlla bene; senza questa informazione non posso inviarti il preventivo!",
+                "maxRetries": 2
+            },
+            {
+                "operation":"CHECK",
+                "isCheckFor":{
+                    "step":"EMAIL",
+                    "text":"Purtroppo senza eMail non posso inviarti il preventivo.",
+                    "stop":true
+                }
+            },
+            {
+                "operation":"SEND_EMAIL",
+                "text":"Il nostro sistema sta elaborando la tua richiesta, controlla la casella di posta a breve riceverai il preventivo.",
+                "template": "mail_PREVENTIVO.html"
+
+            },
+            {
+                "name":"SUGGEST",
+                "operation":"ALERT",
+                "text":"Altri clienti interessati ai preventivi, hanno trovato utili i nostri suggerimenti relativi alla sicurezza personale e del proprio veicolo. Scegli tra i prodotti che ti proponiamo:"
+            },
+            {
+                "operation":"SELECT",
+                "layout": "carousel",
+                "values":[
+                    {
+                        "description": "Casco moto",
+                        "image":"https://glacial-atoll-11053.herokuapp.com/images/casco.jpeg",
+                        "options":["Info","Acquista"]
+                    },
+                    {
+                        "description": "Antifurto Auto",
+                        "image":"https://glacial-atoll-11053.herokuapp.com/images/antifurto.jpeg",
+                        "options":["Info","Acquista"]
+                    },
+                    {
+                        "description": "Guanti auto",
+                        "image":"https://glacial-atoll-11053.herokuapp.com/images/guanti.jpeg",
+                        "options":["Info","Acquista"]
+                    }
+                ]
+            }
+        ]
+    }
+}

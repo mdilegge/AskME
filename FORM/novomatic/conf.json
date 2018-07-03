@@ -1,0 +1,160 @@
+{
+    "gioco":{
+         "steps":[
+            {
+                "operation":"ALERT",
+                "text":"Per giocare con noi è indispensabile raccogliere alcune informazioni. Se cambi idea mi puoi interrompere in qualsiasi momento digitando \"stop\"."
+            },
+            {
+                "name":"TIPO SPORT",
+                "operation":"SELECT",
+                "isFormField":true,
+                "text":"Su quale di questi sport ti interessa puntare?",
+                "values":["Calcio","Basket","Altro"],
+                "maxRetries": 2
+            },
+            {
+                "operation":"CHECK",
+                "isCheckFor":{
+                    "step":"TIPO SPORT",
+                    "text":"Senza una indicazione precisa dello sport non possiamo procedere nel gioco, mi spiace.",
+                    "stop":true
+                }
+            },
+            {
+                "operation":"ALERT",
+                "stop":true,
+                "text":"Non ci sono match disponibili per il CALCIO. Puoi Scegliere un altro sport o riprovare più tardi.",
+                "isValidFor":{
+                    "step":"TIPO SPORT",
+                    "value":["Calcio"]
+                }            
+            },
+            {
+                "operation":"ALERT",
+                "stop":true,
+                "text":"Ci scusiamo, al momento questa opzione non è disponibile.",
+                "isValidFor":{
+                    "step":"TIPO SPORT",
+                    "value":["Altro"]
+                }            
+            },
+            {
+                "operation":"ALERT",
+                "text":"Questi sono i match disponibili oggi: ",
+                "isValidFor":{
+                    "step":"TIPO SPORT",
+                    "value":["Basket"]
+                }            
+            },
+            {
+                "name":"MATCH",
+                "operation":"SELECT",
+                "layout": "carousel",
+                "isFormField":true,
+                "isValidFor":{
+                    "step":"TIPO SPORT",
+                    "value":["Basket"]
+                },            
+                "values":[
+                    {
+                        "description": "SQUADRA A - SQUADRA B",
+                        "options":["1.5","1.3"],
+                        "labels":["Vincente A: 1.5", "Vincente B: 1.3"]
+                    },
+                    {
+                        "description": "SQUADRA C - SQUADRA D",
+                        "options":["2.5","2.3"],
+                        "labels":["Vincente C: 2.5", "Vincente D: 2.3"]
+                    },
+                    {
+                        "description": "SQUADRA E - SQUADRA F",
+                        "options":["3.5","3.3"],
+                        "labels":["Vincente E: 3.5", "Vincente F: 3.3"]
+                    }
+                ]
+            },
+            {
+                "isValidFor":{
+                    "step":"TIPO SPORT",
+                    "value":["Basket"]
+                },
+                "escapeInRetry":true,
+                "replaceWith": "VINCITA",            
+                "name":"PUNTATA",
+                "operation":"NUMBER",
+                "isFormField":true,
+                "text":"Quanto desideri puntare?"
+            },
+            {
+                "isValidFor":{
+                    "step":"TIPO SPORT",
+                    "value":["Basket"]
+                },            
+                "name":"VINCITA",
+                "operation":"CALCULATE",
+                "function":{
+                    "arguments":["MATCH","PUNTATA"],
+                    "expression":"$0 * $1"
+                },
+                "forward":true
+            },
+            {
+                "isValidFor":{
+                    "step":"TIPO SPORT",
+                    "value":["Basket"]
+                },            
+                "operation":"ALERT",
+                "text":"Partendo da una base di $0€ e con la quota $1, ottieni una vincita potenziale pari a: $2€",
+                "textRetry": "Partendo da una base di $0€ e con la quota $1, ottieni una vincita potenziale pari a: $2€",
+                "arguments":["PUNTATA","MATCH", "VINCITA"]
+            },
+            {
+                "isValidFor":{
+                    "step":"TIPO SPORT",
+                    "value":["Basket"]
+                },            
+                "name":"CONFERMA GIOCATA",
+                "operation":"SELECT",
+                "isFormField":true,
+                "text":"Puoi confermare il gioco e terminare, annullare l'operazione o aggiungere un'altra quota quando possibile:",
+                "values":["Confermo","Aggiungo","Annullo"],
+                "noRetry": ["Confermo","Annullo"],
+                "referredStep": "MATCH",
+                "maxRetries": 2
+            },
+            {
+                "name":"AUTHENTICATION",
+                "operation":"LOGIN",
+                "isFormField":false,
+                "stop":true,
+                "text":"Puoi procedere autenticandoti sul nostro sito e concludere la transazione",
+                "button":"PROCEDI",
+                "url":"http://web.eurobet.it/webeb/sport",
+                "isValidFor":{
+                    "step":"CONFERMA GIOCATA",
+                    "value":["Confermo"]
+                }            
+            },
+            {
+                "name":"AGGIUNGO",
+                "operation":"GOTO",
+                "to": "MATCH",
+                "forward":true,
+                "isValidFor":{
+                    "step":"CONFERMA GIOCATA",
+                    "value":["Aggiungo"]
+                }            
+            },
+            {
+                "operation":"ALERT",
+                "stop":true,
+                "text":"Grazie; il gioco è stato annullato, torna a trovarci preso. TI aspettiamo.",
+                "isValidFor":{
+                    "step":"CONFERMA GIOCATA",
+                    "value":["Annullo"]
+                }            
+            }
+         ]
+    }
+}

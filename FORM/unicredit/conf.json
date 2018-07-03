@@ -1,0 +1,256 @@
+{
+    "remainders":{
+        "steps":[
+            {
+                "operation":"ALERT",
+                "text":"Benvenuto, ho alcune cose da dirti prima di proseguire!"
+            },
+            {
+                "operation":"ALERT",
+                "text":"Ricorda che questa settimana hai delle scadenze, non mancare di accedere al tuo servizio di Home Banking per visionare i dettagli."
+            }
+        ]
+    },
+    "ristoranti":{
+        "steps":[
+            {
+                "operation":"ALERT",
+                "text":"Ho trovato per te tre ristoranti non lontani dalla zona in cui ti trovi!"
+            },
+            {
+                "operation":"SELECT",
+                "layout": "carousel",
+                "typing": "openUrl",
+                "values":[
+                    {
+                        "title": "Pizzeria Grotta Azzurra",
+                        "description": "Da asporto, Accetta prenotazioni, Tavoli all'esterno, Posti a sedere, Personale di sala, Seggioloni disponibili, Accessibile in sedia a rotelle, Serve alcolici",
+                        "image":"http://www.pizzeriagrottaazzurra.it/wp-content/uploads/2011/09/IMG-grotta-azzurra-1_85521.jpg",
+                        "options":["https://www.tripadvisor.it/Restaurant_Review-g187871-d3514664-Reviews-Pizzeria_Grotta_Azzurra-Verona_Province_of_Verona_Veneto.html"],
+                        "labels":["Approfondisci"]
+                    },
+                    {
+                        "title": "Dai Fradei",
+                        "description": "Da asporto, Accetta prenotazioni, Posti a sedere, Personale di sala, Accessibile in sedia a rotelle, Connessione Wi-Fi gratuita",
+                        "image":"https://media-cdn.tripadvisor.com/media/photo-s/10/b6/41/3c/eingang.jpg",
+                        "options":["https://www.tripadvisor.it/Restaurant_Review-g187871-d1791366-Reviews-Dai_Fradei-Verona_Province_of_Verona_Veneto.html"],
+                        "labels":["Approfondisci"]
+                    },
+                    {
+                        "title": "Ristorante Alla Fiera - Da Ruggero",
+                        "description": "Accetta prenotazioni, Accessibile in sedia a rotelle, ideale per incontri d'affari, Adatto ai bambini",
+                        "image":"http://getimage.nanonet.it/thumb/timthumb.php?src=http://www.aperitivieceneverona.it/econtent/uploaded/3653/anagrafica_55941c9a4ecca.jpg&h=400&w=600&zc=2",
+                        "options":["https://www.tripadvisor.it/Restaurant_Review-g187871-d2470732-Reviews-Ristorante_Alla_Fiera_Da_Ruggero-Verona_Province_of_Verona_Veneto.html"],
+                        "labels":["Approfondisci"]
+                    }
+                ]
+            }
+        ]
+    },
+    "vegan":{
+        "steps":[
+            {
+                "operation":"ALERT",
+                "text":"Ho trovato per te tre ristoranti vegetariani non lontani dalla zona in cui ti trovi!"
+            },
+            {
+                "operation":"SELECT",
+                "layout": "carousel",
+                "typing": "openUrl",
+                "values":[
+                    {
+                        "title": "La Lanterna - Ristorante Vegano Biologico",
+                        "description": "Romantico, Occasioni speciali, Per bambini, Adatto ai bambini",
+                        "image":"https://cucinaconstefania.files.wordpress.com/2014/05/lalanterna.jpg",
+                        "options":["https://www.tripadvisor.it/Restaurant_Review-g187871-d5585359-Reviews-La_Lanterna_Ristorante_Vegano_Biologico-Verona_Province_of_Verona_Veneto.html"],
+                        "labels":["Approfondisci"]
+                    },
+                    {
+                        "title": "Osteria Mondodoro",
+                        "description": "Tavoli all'esterno, Posti a sedere, Personale di sala, Serve alcolici, Bar completo, Vino e birra, Connessione Wi-Fi gratuita, Accetta prenotazioni, Accessibile in sedia a rotelle",
+                        "image":"https://media-cdn.tripadvisor.com/media/photo-s/09/df/6a/af/entrance-of-osteria-mondodoro.jpg",
+                        "options":["https://www.tripadvisor.it/Restaurant_Review-g187871-d2210731-Reviews-Osteria_Mondodoro-Verona_Province_of_Verona_Veneto.html"],
+                        "labels":["Approfondisci"]
+                    },
+                    {
+                        "title": "Osteria Macafame",
+                        "description": " Accetta prenotazioni, Tavoli all'esterno, Posti a sedere, Personale di sala, Accessibile in sedia a rotelle, Serve alcolici, Bar completo, Accetta American Express, Accetta Mastercard, Accetta Visa, Seggioloni disponibili, Connessione Wi-Fi gratuita, Accetta carte di credito",
+                        "image":"https://media-cdn.tripadvisor.com/media/photo-s/08/01/fe/60/osteria-macafame.jpg",
+                        "options":["https://www.tripadvisor.it/Restaurant_Review-g187871-d5992709-Reviews-Osteria_Macafame-Verona_Province_of_Verona_Veneto.html"],
+                        "labels":["Approfondisci"]
+                    }
+                ]
+            }
+        ]
+    },
+    "eventi":{
+        "steps":[
+            {
+                "operation":"ALERT",
+                "text":"Nei prossimi giorni nella tua città, si terranno numerosi eventi! Ecco una selezione che potrebbe interessarti."
+            },
+            {
+                "operation":"SELECT",
+                "layout": "carousel",
+                "typing": "openUrl",
+                "values":[
+                    {
+                        "title": "Umberto Tozzi",
+                        "description": "Il concerto in programma all'Arena di Verona il 18 settembre è stato posticipato al 14 ottobre. Scopri tutti i dettagli!",
+                        "image":"http://static.ritalia.nohup.it/img/news/20170607103507_umbertotozzi.jpg",
+                        "options":["http://www.ticketone.it/umberto-tozzi-biglietti.html?affiliate=ITT&doc=artistPages%2Ftickets&fun=artist&action=tickets&jumpIn=yTix&key=1861732%249777423&xtcr=3&xtnp=1"],
+                        "labels":["Approfondisci"]
+                    },
+                    {
+                        "title": "BOTERO",
+                        "description": "Le opere di Botero arrivano a Verona dal 21 ottobre. Scopri i dettagli e acquista ora il tuo biglietto!",
+                        "image":"http://www.lecedrare.it/images/news/it/1501231445-mostra-botero-verona-da-ottobre-2017-il-ristorante-dove-cenare-con-l-arte.jpg",
+                        "options":["http://www.ticketone.it/botero-biglietti.html?affiliate=ITT&doc=artistPages%2Ftickets&fun=artist&action=tickets&jumpIn=yTix&key=2005977%2410104603&xtcr=5&xtnp=1"],
+                        "labels":["Approfondisci"]
+                    },
+                    {
+                        "title": "Jay Dee",
+                        "description": "Torna il rap di Jay Dee. Acquista il tuo biglietto!",
+                        "image":"http://www.ticketone.it/obj/media/IT-eventim/teaser/222x222/2017/jay-dee-biglietti.jpg",
+                        "options":["http://www.ticketone.it/jay-dee-made-this-biglietti.html?affiliate=ITT&doc=artistPages%2Ftickets&fun=artist&action=tickets&jumpIn=yTix&key=2021198%2410119600&xtcr=11&xtnp=1"],
+                        "labels":["Approfondisci"]
+                    }
+                ]
+            }
+        ]
+    },
+    "spesa":{
+        "steps":[
+            {
+                "operation":"ALERT",
+                "text":"Oggi ho individuato per te i migliori punti vendita che garantiscono il maggior risparmio per la tua spesa quotidiana!"
+            },
+            {
+                "operation":"SELECT",
+                "layout": "carousel",
+                "typing": "openUrl",
+                "values":[
+                    {
+                        "title": "PAM VERONA",
+                        "description": "Via IV novembre, 6/A",
+                        "image":"https://pampanorama.ojcdn.it/images/logo-pam.jpg",
+                        "options":["https://pampanorama.ojcdn.it/assets/flyers/CH_PRO_2017.pdf"],
+                        "labels":["Approfondisci"]
+                    },
+                    {
+                        "title": "CONAD VERONA",
+                        "description": "VIA PISANO 63",
+                        "image":"http://www.sunnyvalerio.it/wp-content/uploads/2016/04/logo-conad.jpg",
+                        "options":["http://www.conad.it/mediaObject/volantini/DAO/3-ott-conad-veneto/DAO2117_Conad_Veneto_seindao/original/DAO2117_Conad_Veneto_seindao.pdf"],
+                        "labels":["Approfondisci"]
+                    },
+                    {
+                        "title": "EUROSPIN VERONA",
+                        "description": "Via Curiel 19",
+                        "image":"http://www.secomgroup.it/wp-content/uploads/2014/11/eurospin.png",
+                        "options":["https://www.eurospin.it/Iniziativa/P24_2017/pdf/spesa.pdf"],
+                        "labels":["Approfondisci"]
+                    }
+                ]
+            }
+        ]
+    },
+    "mutuo":{
+        "steps":[
+            {
+                "operation":"ALERT",
+                "text":"Ti farò una serie domande per capire in maniera più precisa le tue esigenze. In qualsiasi momento puoi dire 'stop' per interrompere l'intervista."
+            },
+            {
+                "name":"FINALITA",
+                "operation":"SELECT",
+                "isFormField":true,
+                "text":"Per cortesia dimmi la finalità del mutuo",
+                "values":["Prima Casa","Seconda Casa","Ristrutturazione"],
+                "maxRetries": 2
+            },
+            {
+                "operation":"CHECK",
+                "isCheckFor":{
+                    "step":"FINALITA",
+                    "text":"Purtroppo senza indicazione di una finalità non ho modo di calcolare il preventivo.",
+                    "stop":true
+                }
+            },
+            {
+                "name":"TASSO",
+                "operation":"SELECT",
+                "isFormField":true,
+                "text":"A quale tasso sei interessato?",
+                "values":["Fisso","Variabile","Misto"],
+                "maxRetries": 2
+            },
+            {
+                "operation":"CHECK",
+                "isCheckFor":{
+                    "step":"TASSO",
+                    "text":"Purtroppo senza indicazione di una tasso non ho modo di calcolare il preventivo.",
+                    "stop":true
+                }
+            },
+            {
+                "name":"INDICE",
+                "operation":"SELECT",
+                "isFormField":true,
+                "isValidFor":{
+                    "step":"TASSO",
+                    "value":"Variabile"
+                },
+                "text":"Indica un indice per il tasso variabile",
+                "values":["Tutti","Euribor","BCE"]
+            },
+            {
+                "name":"VALORE IMMOBILE",
+                "operation":"NUMBER",
+                "isFormField":true,
+                "text":"Quanto vale l'immobile?"
+            },
+            {
+                "name":"VALORE MUTUO",
+                "operation":"NUMBER",
+                "isFormField":true,
+                "text":"A quanto ammonta l'importo del mutuo?"
+            },
+            {
+                "name":"DURATA MUTUO",
+                "operation":"SELECT",
+                "isFormField":true,
+                "text":"Che durata prevedi per il mutuo?",
+                "values":["10","20","25"]
+            },
+            {
+                "name":"ETA RICHIEDENTE",
+                "operation":"NUMBER",
+                "isFormField":true,
+                "text":"Quanti anni hai?"
+            },
+            {
+                "name":"EMAIL",
+                "operation":"GET_EMAIL",
+                "isFormField":true,
+                "text":"Bene, abbiamo tutti i dati necessari per calcolare il tuo preventivo, dammi un **indirizzo di posta elettronica** cui inviare il resoconto.",
+                "invalidMsg": "Questo non sembra un indirizzo eMail valido, controlla bene; senza questa informazione non posso inviarti il preventivo!",
+                "maxRetries": 2
+            },
+            {
+                "operation":"CHECK",
+                "isCheckFor":{
+                    "step":"EMAIL",
+                    "text":"Purtroppo senza eMail non posso inviarti il preventivo.",
+                    "stop":true
+                }
+            },
+            {
+                "operation":"SEND_EMAIL",
+                "text":"Il nostro sistema sta elaborando la tua richiesta, controlla la casella di posta a breve riceverai il preventivo.",
+                "template": "mail_PREVENTIVO.html"
+
+            } 
+        ]
+    }
+}

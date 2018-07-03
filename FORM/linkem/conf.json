@@ -1,0 +1,137 @@
+{
+    "modulo":{
+         "steps":[
+            {
+                "operation":"ALERT",
+                "text":"Ti farò una serie domande per raccogliere le informazioni indispensabili a inoltrare il modulo per la richiesta di passaggio da PREPAGATA ad ABBONAMENTO. Mi puoi interrompere in qualsiasi momento digitando \"stop\"."
+            },
+            {
+                "name":"CODICE CONTRATTO",
+                "operation":"TEXTVALIDATE",
+                "isFormField":true,
+                "text":"Indica il tuo **CODICE CONTRATTO**.",
+                "invalidMsg": "Il CODICE CONTRATTO è una successione di 9 caratteri, il primo dei quali è sempre una C",
+                "validators": "validators:code",
+                "maxRetries": 2
+            }, 
+            {
+                "operation":"CHECK",
+                "isCheckFor":{
+                    "step":"CODICE CONTRATTO",
+                    "text":"Purtroppo senza CODICE CONTRATTO non puoi inoltrare il modiulo, riprova non appena avrai un codice valido.",
+                    "stop":true
+                }
+            }, 
+            {
+                "name":"NOME",
+                "operation":"TEXT",
+                "isFormField":true,
+                "text":"Mi dici il tuo **nome** per favore?"
+            },
+            {
+                "name":"COGNOME",
+                "operation":"TEXT",
+                "isFormField":true,
+                "text":"Anche il tuo **cognome**, grazie."
+            },
+            {
+                "name":"CODICE FISCALE",
+                "operation":"TEXTVALIDATE",
+                "isFormField":true,
+                "validators": "validators:taxCode",
+                "text":"Ed ora il **codice fiscale**, grazie.",
+                "invalidMsg": "Questo non sembra essere un codice fiscale valido, riprova",
+                "maxRetries": 2
+            },
+            {
+                "operation":"CHECK",
+                "isCheckFor":{
+                    "step":"CODICE FISCALE",
+                    "text":"Ok, possiamo procedere senza codice fiscale."
+                }
+            },
+            {
+                "name":"EMAIL",
+                "operation":"GET_EMAIL",
+                "isFormField":true,
+                "text":"Indica un **indirizzo eMail** al quale contattarti.",
+                "invalidMsg": "Questo non sembra un indirizzo eMail valido, controlla bene; senza questa informazione non possiamo accettare il modulo!",
+                "maxRetries": 2
+            },
+            {
+                "operation":"CHECK",
+                "isCheckFor":{
+                    "step":"EMAIL",
+                    "text":"Purtroppo senza eMail non puoi comunicare con la nostra azienda, grazie lo stesso per il tuo interessamento.",
+                    "stop":true
+                }
+            },
+            {
+                "operation":"ALERT",
+                "text":"Le nuove condizioni economiche previste dal passaggio da Linkem Senza Limiti Ricaricabile a Linkem Senza Limiti sono descritte di seguito:"
+            },
+            {
+                "operation":"ALERT",
+                "text":"- contributo mensile: € 21,90/mese (IVA inclusa)\n- contributo Modem Senza Pensieri: € 3/mese (IVA inclusa)"
+            },
+            {
+                "operation":"ALERT",
+                "text":"Eventuali promozioni in corso sull'offerta Linkem Senza Limiti in abbonamento non potranno essere applicate.\nIl sottoscritto accettando le condizioni di cui sopra, richiede:"
+            },
+            {
+                "operation":"ALERT",
+                "text":"Il passaggio dall’attuale piano tariffario:\n   - 'Linkem Senza Limiti Ricaricabile' \n Al piano tariffario:\n   - 'Linkem Senza Limiti' \nCon contributo di attivazione GRATIS"
+            },
+            {
+                "name":"MODEM",
+                "operation":"SELECT",
+                "isFormField":true,
+                "text":"Quale tipo di **MODEM** possiedi:",
+                "values":["da INTERNO","da ESTERNO"],
+                "maxRetries": 2
+            },
+            {
+                "operation":"CHECK",
+                "isCheckFor":{
+                    "step":"MODEM",
+                    "text":"Senza l'indicazione del tipo di modem non si può procedere con l'inoltro del modulo, mi spiace.",
+                    "stop":true
+                }
+            }, 
+            {
+                "operation":"ALERT",
+                "text":"Il richiedente dichiara, ai sensi e per gli effetti di cui agli artt. 46 e 47 del D.P.R. 445/00, consapevole delle sanzioni penali richiamate dall’art. 76 del D.P.R n. 445/00 in caso di dichiarazioni mendaci e di informazioneo uso di atti falsi o uso di atti falsi"
+            },
+            {
+                "name":"AUTOCERTIFICAZIONE",
+                "operation":"SELECT",
+                "isFormField":true,
+                "text":"- che tutti i dati inseriti nel presente Modulo sono veritieri \n - di essere l’intestatario del contratto Linkem",
+                "values":["SI","NO"],
+                "maxRetries": 2
+            },
+            {
+                "operation":"CHECK",
+                "isCheckFor":{
+                    "step":"AUTOCERTIFICAZIONE",
+                    "text":"Mi spiace ma solo confermando le clausole di cui sopra, puoi procedere all'inoltro del modulo.",
+                    "pushValue":"NO"
+                }
+            },
+            {
+                "operation":"SEND_EMAIL",
+                "text":"Il nostro sistema sta elaborando la tua richiesta, ne riceverai una copia anche alla tua casella di posta.",
+                "isValidFor":{
+                    "step":"AUTOCERTIFICAZIONE",
+                    "value":"SI"
+                },
+                "subject":"PASSAGGIO DA PREPAGATA AD ABBONAMENTO",
+                "template": "mail_LINKEM.html"
+            },
+            {
+                "operation":"ALERT",
+                "text":"Grazie per la collaborazione, spero di rivederti presto."
+            }
+        ]
+    }
+}

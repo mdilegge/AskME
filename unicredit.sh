@@ -1,0 +1,1 @@
+NAME_PROJECT="unicredit" ID_PROJECT='59d78dd15c14854ad7880595' BASE_URL='http://stage-askme.network-contacts.it/AskMeSemRest/askmesem/rest/virtualAgentService/' ACTION_ANSWER='searchAnswer' ACTION_CATEGORY='answerByCategory' MICROSOFT_APP_ID='c3cc464f-9950-4bd8-9c0a-69d97b79d4c2' MICROSOFT_APP_PASSWORD='kmz9hdZmdFqi7VQDoe78094' node index.js
