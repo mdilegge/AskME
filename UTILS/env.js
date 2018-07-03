@@ -28,7 +28,7 @@ var env = (function(){
         })(),
         CONNECTOR: function(){
              return new builder.ChatConnector({
-                appId: process.env.MICROSOFT_APP_ID,
+                appId: "c3cc464f-9950-4bd8-9c0a-69d97b79d4c2",  //process.env.MICROSOFT_APP_ID,
                 appPassword: process.env.MICROSOFT_APP_PASSWORD
             });
         },
@@ -42,7 +42,8 @@ var env = (function(){
                 url: 'https://login.microsoftonline.com/botframework.com/oauth2/v2.0/token',
                 method: 'POST',
                 headers: headers,
-                form: {'grant_type': 'client_credentials', 'client_id': process.env.MICROSOFT_APP_ID, 'client_secret':process.env.MICROSOFT_APP_PASSWORD, 'scope':'https://api.botframework.com/.default'}
+                form: {'grant_type': 'client_credentials', 'client_id': 'kmz9hdZmdFqi7VQDoe78094', 'client_secret': process.env.MICROSOFT_APP_PASSWORD, 'scope':'https://api.botframework.com/.default'}
+				//form: {'grant_type': 'client_credentials', 'client_id': process.env.MICROSOFT_APP_ID, 'client_secret':process.env.MICROSOFT_APP_PASSWORD, 'scope':'https://api.botframework.com/.default'}
             }
 
             // Start the request
