@@ -28,7 +28,7 @@ var env = (function(){
         })(),
         CONNECTOR: function(){
              return new builder.ChatConnector({
-                appId: "c3cc464f-9950-4bd8-9c0a-69d97b79d4c2",  //process.env.MICROSOFT_APP_ID,
+                appId: "554533f9-2182-42be-9473-bc3bd008b830",  //process.env.MICROSOFT_APP_ID,
                 appPassword: process.env.MICROSOFT_APP_PASSWORD
             });
         },
