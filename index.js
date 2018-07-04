@@ -84,10 +84,10 @@ switch(session.message.sourceEvent.type)
             break;
 
         default:
-			console.log("USO LUIS per " + session.message.sourceEvent.type);
-            session.send('This is not a Live Assist message ' + session.message.sourceEvent.type);
+			session.send('This is not a Live Assist message ' + session.message.sourceEvent.type);
     }
 
+console.log("USO LUIS per " + session.message.sourceEvent.type);
 
 bot.on('conversationUpdate', function(message){
 	 if (message.membersAdded) {
