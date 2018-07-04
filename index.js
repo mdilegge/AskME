@@ -43,45 +43,46 @@ if(projectName){
 	/*
 		Il BOT non utilizza il modello LUIS.
 	*/
-    switch(session.message.sourceEvent.type)
-    {
-        case "visitorContextData":
-            //process context data if required. This is the first message received so say hello.
-            //session.send('Hi, I am an echo bot and will repeat everything you said.');
-            break;
-
-        case "systemMessage":
-            //react to system messages if required
-            break;
-
-        case "transferFailed":
-            //react to transfer failures if required
-            break;
-
-        case "otherAgentMessage":
-            //react to messages from a supervisor if required
-            break;
-
-        case "visitorMessage":
-            // Check for transfer message
-                        if(session.message.text.startsWith(TRANSFER_MESSAGE)){
-                                var transferTo = session.message.text.substr(TRANSFER_MESSAGE.length);
-                                var msg = new builder.Message(session).sourceEvent({directline: {type: "transfer", agent: transferTo}});
-                                session.send(msg);
-                        }else {
-                            bot.dialog('/', [
-                                function (session, args) {
+	bot.dialog('/', [
+		function (session, args) {
+            switch(session.message.sourceEvent.type)
+            {
+                case "visitorContextData":
+                    //process context data if required. This is the first message received so say hello.
+                    //session.send('Hi, I am an echo bot and will repeat everything you said.');
+                    break;
+        
+                case "systemMessage":
+                    //react to system messages if required
+                    break;
+        
+                case "transferFailed":
+                    //react to transfer failures if required
+                    break;
+        
+                case "otherAgentMessage":
+                    //react to messages from a supervisor if required
+                    break;
+        
+                case "visitorMessage":
+                    // Check for transfer message
+                                if(session.message.text.startsWith(TRANSFER_MESSAGE)){
+                                        var transferTo = session.message.text.substr(TRANSFER_MESSAGE.length);
+                                        var msg = new builder.Message(session).sourceEvent({directline: {type: "transfer", agent: transferTo}});
+                                        session.send(msg);
+                                }else {
                                     session.userData.correlationId = uuidV1();
                                     session.beginDialog('askme:VA');
                                     session.endDialog();
                                 }
-                            ]);
-                        }
-            break;
+                    break;
+        
+                default:
+                    session.send('This is not a Live Assist message ' + session.message.sourceEvent.type);
+            }
+		}
+	]);
 
-        default:
-            session.send('This is not a Live Assist message ' + session.message.sourceEvent.type);
-    }
 
 }
 
