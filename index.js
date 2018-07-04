@@ -31,7 +31,7 @@ bot.library(askMeVA());
 bot.use(builder.Middleware.sendTyping());
 
 //var projectName = process.env.NAME_PROJECT;
-var projectName = "insurance";
+var projectName = null; //"insurance";
 if(projectName){
 	/*
 		Il BOT utilizza il modello LUIS associato al progetto...
@@ -45,49 +45,46 @@ if(projectName){
 	*/
 	bot.dialog('/', [
 		function (session, args) {
-            session.userData.correlationId = uuidV1();
-            session.beginDialog('askme:VA');
-            session.endDialog();
+            switch(session.message.sourceEvent.type)
+            {
+                case "visitorContextData":
+                    //process context data if required. This is the first message received so say hello.
+                    //session.send('Hi, I am an echo bot and will repeat everything you said.');
+                    break;
+        
+                case "systemMessage":
+                    //react to system messages if required
+                    break;
+        
+                case "transferFailed":
+                    //react to transfer failures if required
+                    break;
+        
+                case "otherAgentMessage":
+                    //react to messages from a supervisor if required
+                    break;
+        
+                case "visitorMessage":
+                    // Check for transfer message
+                                if(session.message.text.startsWith(TRANSFER_MESSAGE)){
+                                        var transferTo = session.message.text.substr(TRANSFER_MESSAGE.length);
+                                        var msg = new builder.Message(session).sourceEvent({directline: {type: "transfer", agent: transferTo}});
+                                        session.send(msg);
+                                }else {
+                                    session.userData.correlationId = uuidV1();
+                                    session.beginDialog('askme:VA');
+                                    session.endDialog();
+                                }
+                    break;
+        
+                default:
+                    session.send('This is not a Live Assist message ' + session.message.sourceEvent.type);
+            }
 		}
 	]);
 
+
 }
-
-switch(session.message.sourceEvent.type)
-    {
-        case "visitorContextData":
-            //process context data if required. This is the first message received so say hello.
-            session.send('Hi, I am an echo bot and will repeat everything you said.');
-            break;
-
-        case "systemMessage":
-            //react to system messages if required
-            break;
-
-        case "transferFailed":
-            //react to transfer failures if required
-            break;
-
-        case "otherAgentMessage":
-            //react to messages from a supervisor if required
-            break;
-
-        case "visitorMessage":
-            // Check for transfer message
-                        if(session.message.text.startsWith(TRANSFER_MESSAGE)){
-                                var transferTo = session.message.text.substr(TRANSFER_MESSAGE.length);
-                                var msg = new builder.Message(session).sourceEvent({directline: {type: "transfer", agent: transferTo}});
-                                session.send(msg);
-                        }else {
-                                session.send('You said ' + session.message.text);
-                        }
-            break;
-
-        default:
-			session.send('This is not a Live Assist message ' + session.message.sourceEvent.type);
-    }
-
-console.log("USO LUIS per " + session.message.sourceEvent.type);
 
 bot.on('conversationUpdate', function(message){
 	 if (message.membersAdded) {
