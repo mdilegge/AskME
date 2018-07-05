@@ -15,7 +15,7 @@ server.listen(process.env.port || process.env.PORT || 3978, function () {
 
 
 var connector = environment().CONNECTOR();
-const TRANSFER_MESSAGE = 'transfer to ';
+const TRANSFER_MESSAGE = 'vorrei parlare con un ';
 /*
 new builder.ChatConnector({
     appId: process.env.MICROSOFT_APP_ID,
@@ -67,8 +67,8 @@ if(projectName){
                 case "visitorMessage":
                     // Check for transfer message
                                 if(session.message.text.startsWith(TRANSFER_MESSAGE)){
-                                        var transferTo = session.message.text.substr(TRANSFER_MESSAGE.length);
-                                        var msg = new builder.Message(session).sourceEvent({directline: {type: "transfer", agent: "Livio"}});
+                                        //var transferTo = session.message.text.substr(TRANSFER_MESSAGE.length);
+                                        var msg = new builder.Message(session).sourceEvent({directline: {type: "transfer", skill: "MySkill"}});
                                         session.send(msg);
                                 }else {
                                     session.userData.correlationId = uuidV1();
@@ -79,8 +79,8 @@ if(projectName){
         
                 default:
 						if(session.message.text.startsWith(TRANSFER_MESSAGE)){
-                                        var transferTo = session.message.text.substr(TRANSFER_MESSAGE.length);
-                                        var msg = new builder.Message(session).sourceEvent({directline: {type: "transfer", agent: "Livio"}});
+                                        //var transferTo = session.message.text.substr(TRANSFER_MESSAGE.length);
+                                        var msg = new builder.Message(session).sourceEvent({directline: {type: "transfer", skill: "MySkill"}});
                                         session.send(msg);
                                 }else {
                                     session.userData.correlationId = uuidV1();
