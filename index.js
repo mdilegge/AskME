@@ -49,7 +49,7 @@ if(projectName){
             {
                 case "visitorContextData":
                     //process context data if required. This is the first message received so say hello.
-                    session.send('Hi, I am an echo bot and will repeat everything you said.');
+                    session.send('Ciao sono Bibi, il tuo assistente virtuale. Come posso aiutarti?');
                     break;
         
                 case "systemMessage":
