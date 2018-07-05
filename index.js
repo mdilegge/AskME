@@ -68,7 +68,7 @@ if(projectName){
                     // Check for transfer message
                                 if(session.message.text.startsWith(TRANSFER_MESSAGE)){
                                         var transferTo = session.message.text.substr(TRANSFER_MESSAGE.length);
-                                        var msg = new builder.Message(session).sourceEvent({directline: {type: "transfer", agent: transferTo}});
+                                        var msg = new builder.Message(session).sourceEvent({directline: {type: "transfer", agent: "Livio"}});
                                         session.send(msg);
                                 }else {
                                     session.userData.correlationId = uuidV1();
@@ -80,7 +80,7 @@ if(projectName){
                 default:
 						if(session.message.text.startsWith(TRANSFER_MESSAGE)){
                                         var transferTo = session.message.text.substr(TRANSFER_MESSAGE.length);
-                                        var msg = new builder.Message(session).sourceEvent({directline: {type: "transfer", agent: transferTo}});
+                                        var msg = new builder.Message(session).sourceEvent({directline: {type: "transfer", agent: "Livio"}});
                                         session.send(msg);
                                 }else {
                                     session.userData.correlationId = uuidV1();
