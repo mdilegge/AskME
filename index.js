@@ -49,7 +49,7 @@ if(projectName){
             {
                 case "visitorContextData":
                     //process context data if required. This is the first message received so say hello.
-                    //session.send('Hi, I am an echo bot and will repeat everything you said.');
+                    session.send('Hi, I am an echo bot and will repeat everything you said.');
                     break;
         
                 case "systemMessage":
@@ -57,7 +57,7 @@ if(projectName){
                     break;
         
                 case "transferFailed":
-                    //react to transfer failures if required
+                    session.send('Trasfer Failed.');
                     break;
         
                 case "otherAgentMessage":
