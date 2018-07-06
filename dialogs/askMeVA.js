@@ -61,7 +61,7 @@ lib.dialog('VA',[
 
 		var args = {
     		data: {
-    			"projectId" : "58cbfeff5c14850ac8f99183", //process.env.ID_PROJECT, //ID del progetto VA salvato come variabile di ambiente in HEROKU
+    			"projectId" : "597b4e77f955d66d1f1de483", //process.env.ID_PROJECT, //ID del progetto VA salvato come variabile di ambiente in HEROKU
     			"channel" : "MSSNGR",
 				"question" : "BUTTON",
 				"correlationId": session.userData.correlationId
@@ -69,7 +69,7 @@ lib.dialog('VA',[
     		headers: { "Content-Type": "application/json" }
 		};
 
-		var baseUrl = "http://stage-askme.network-contacts.it/AskMeSemRest/askmesem/rest/virtualAgentService/"; //process.env.BASE_URL;//Base del servizio salvata come variabile di ambiente in HEROKU
+		var baseUrl = "http://askme.francecentral.cloudapp.azure.com:8080/AskMeSemRest/askmesem/rest/virtualAgentService/"; //process.env.BASE_URL;//Base del servizio salvata come variabile di ambiente in HEROKU
 		var url = null;
 
 		if(messageSent["text"].endsWith(CONTROL_STRING)){
