@@ -61,7 +61,7 @@ lib.dialog('VA',[
 
 		var args = {
     		data: {
-    			"projectId" : "597b4e77f955d66d1f1de483", //process.env.ID_PROJECT, //ID del progetto VA salvato come variabile di ambiente in HEROKU
+    			"projectId" : "5b45e386147318553b5e22cc", //process.env.ID_PROJECT, //ID del progetto VA salvato come variabile di ambiente in HEROKU
     			"channel" : "MSSNGR",
 				"question" : "BUTTON",
 				"correlationId": session.userData.correlationId
